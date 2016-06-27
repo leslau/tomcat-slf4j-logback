@@ -281,6 +281,11 @@
                     <version>${tomcat.version}</version>
                 </dependency>
                 <dependency>
+                    <groupId>de.siegmar</groupId>
+                    <artifactId>logback-gelf</artifactId>
+                    <version>1.0.0</version>
+                </dependency>
+                <dependency>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
                     <version>${slf4j.version}</version>
@@ -324,7 +329,7 @@
                                     <artifactSet>
                                         <includes>
                                             <include>org.apache.tomcat:tomcat-juli</include>
-
+                                            <include>de.siegmar:logback-gelf</include>
                                             <include>org.slf4j:jcl-over-slf4j</include>
                                             <include>org.slf4j:slf4j-api</include>
                                             <include>ch.qos.logback:logback-classic</include>
@@ -361,6 +366,10 @@
                                         <relocation>
                                             <pattern>ch.qos.logback</pattern>
                                             <shadedPattern>org.apache.juli.logging.ch.qos.logback</shadedPattern>
+                                        </relocation>
+                                        <relocation>
+                                            <pattern>de.siegmar</pattern>
+                                            <shadedPattern>org.apache.juli.de.siegmar</shadedPattern>
                                         </relocation>
                                         <!-- Located in org.apache.juli.logging.ch.qos.logback.classic.util -->
                                         <relocation>
@@ -501,7 +510,7 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                        <!--This plugin's configuration is used to store 
+                        <!--This plugin's configuration is used to store
                             Eclipse m2e settings only. It has no influence on the Maven build itself. -->
                         <plugin>
                             <groupId>org.eclipse.m2e</groupId>
